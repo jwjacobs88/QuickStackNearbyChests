@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[ModTitle("Your Mod Name")] // The mod name.
-[ModDescription("Your Mod Description")] // Short description for the mod.
-[ModAuthor("Author Name")] // The author name of the mod.
+[ModTitle("Quick Stack Nearby Chests")] // The mod name.
+[ModDescription("Quickly Stack Items into Nearby Chests that contain those items")] // Short description for the mod.
+[ModAuthor("MrScruff")] // The author name of the mod.
 [ModIconUrl("Icon Url")] // An icon for your mod. Its recommended to be 128x128px and in .jpg format.
 [ModWallpaperUrl("Banner Url")] // A banner for your mod. Its recommended to be 330x100px and in .jpg format.
 [ModVersionCheckUrl("Version File Url")] // This is for update checking. Needs to be a .txt file with the latest mod version.
