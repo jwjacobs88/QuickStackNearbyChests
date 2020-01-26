@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [ModTitle("Quick Stack Nearby Chests")] // The mod name.
@@ -20,7 +21,31 @@ public class QuickStackNearbyChests : Mod
     // The Update() method is being called every frame. Have fun!
     public void Update()
     {
-        
+        if (CanvasHelper.ActiveMenu == MenuType.Inventory && Input.GetKeyDown(KeyCode.Z))
+        {
+            Network_Player player = RAPI.getLocalPlayer();
+            if (player != null)
+            {
+                this.PrintPlayerInventory(player);
+            }
+        }
+    }
+
+    private void PrintPlayerInventory(Network_Player player)
+    {
+        PlayerInventory inventory = player.Inventory;
+
+        List<Slot> nonHotbar = inventory.allSlots.GetRange(player.Inventory.hotslotCount, player.Inventory.allSlots.Count);
+        RConsole.Log($"Player has {player.Inventory.allSlots.Count} slots");
+        foreach (Slot slot in nonHotbar)
+        {
+            if (slot.IsEmpty == true) {
+                RConsole.Log("Empty");
+            } else {
+                 
+                RConsole.Log($"{slot.GetItemBase().UniqueName as string} {slot.itemInstance.Amount}/{slot.itemInstance.settings_Inventory.StackSize}");
+            }
+        }
     }
 
     // The OnModUnload() method is being called when your mod gets unloaded.
