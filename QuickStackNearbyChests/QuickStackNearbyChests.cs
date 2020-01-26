@@ -35,15 +35,15 @@ public class QuickStackNearbyChests : Mod
     {
         PlayerInventory inventory = player.Inventory;
 
-        List<Slot> nonHotbar = inventory.allSlots.GetRange(player.Inventory.hotslotCount, player.Inventory.allSlots.Count);
-        RConsole.Log($"Player has {player.Inventory.allSlots.Count} slots");
+        List<Slot> nonHotbar = inventory.allSlots.GetRange(player.Inventory.hotslotCount, player.Inventory.allSlots.Count - player.Inventory.hotslotCount);
+        RConsole.Log("Player has " + player.Inventory.allSlots.Count + " slots");
         foreach (Slot slot in nonHotbar)
         {
             if (slot.IsEmpty == true) {
                 RConsole.Log("Empty");
             } else {
                  
-                RConsole.Log($"{slot.GetItemBase().UniqueName as string} {slot.itemInstance.Amount}/{slot.itemInstance.settings_Inventory.StackSize}");
+                RConsole.Log(slot.GetItemBase().UniqueName as string + " " + slot.itemInstance.Amount +" "+slot.itemInstance.settings_Inventory.StackSize);
             }
         }
     }
